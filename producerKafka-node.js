@@ -10,7 +10,7 @@ const client = new Client({
 const payloads = [
     {
         topic: 'testing',
-        messages: 'Sopa de macaco'
+        messages: `Sopa de macaco ${new Date()}`
     }
 ];
 

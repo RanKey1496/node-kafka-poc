@@ -16,7 +16,7 @@ const topic = [{ topic: 'topic' }];
 const options = { autoCommit: false, groupId: 'node' };*/
 
 const client = new Client({
-    kafkaHost: '198.199.66.143:9092', 
+    kafkaHost: process.env.HOST, 
     clientId: 'nodejs',
 });
 
