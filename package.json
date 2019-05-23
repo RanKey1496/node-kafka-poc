@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "consumer": "node ./consumerKafka-node.js",
+    "producer": "node ./producerKafka-node.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

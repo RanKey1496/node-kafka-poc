@@ -4,7 +4,7 @@ const kafka = require('kafka-node');
 const Consumer = kafka.Consumer;
 const Client = kafka.KafkaClient;
 
-const jaasCfg = { mechanism: 'SCRAM-SHA-256', username: 'user', password: 'pass' };
+/*const jaasCfg = { mechanism: 'SCRAM-SHA-256', username: 'user', password: 'pass' };
 const client = new Client({
     sslOptions: {},
     kafkaHost: 'host:port,host:port,host:pot', 
@@ -13,12 +13,30 @@ const client = new Client({
 });
 
 const topic = [{ topic: 'topic' }];
-const options = { autoCommit: false, groupId: 'node' };
+const options = { autoCommit: false, groupId: 'node' };*/
 
-const consumer = new Consumer(client, topic, options);
+const client = new Client({
+    kafkaHost: '198.199.66.143:9092', 
+    clientId: 'nodejs',
+});
+
+const payloads = [
+    {
+        topic: 'testing',
+        offset: 0,
+        partition: 0
+    }
+]
+
+const options = {
+    autoCommit: false
+}
+
+const consumer = new Consumer(client, payloads, options);
 
 consumer.on('message', function (message) {
     console.log(message);
+    console.log('Lmao: ', message.value);
 });
 
 consumer.on('error', function (err) {
